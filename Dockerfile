@@ -16,7 +16,7 @@ RUN rm /etc/nginx/sites-enabled/default
 # install ttrss and patch configuration
 RUN git clone https://github.com/gothfox/Tiny-Tiny-RSS.git /var/www
 # add 3rd-party themes
-RUN cp -r themes/* /var/www/themes/
+COPY themes/* /var/www/themes/
 WORKDIR /var/www
 RUN cp config.php-dist config.php
 RUN sed -i -e "/'SELF_URL_PATH'/s/ '.*'/ 'http:\/\/localhost\/'/" config.php
